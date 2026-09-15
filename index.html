@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CompuChild of LGS and Campbell &ndash; Fall 2026 Classes &amp; Camps</title>
+<meta name="description" content="Fall 2026 after-school STEM classes and school-break camps from CompuChild of LGS and Campbell, by location, with registration links.">
+<style>
+:root {
+  --ink: #1c2740;
+  --muted: #5b6478;
+  --line: #e3e0d8;
+  --paper: #faf8f4;
+  --card: #fff;
+  --accent: #0e7c74;
+  --accent-ink: #fff;
+  --warm: #f2a33a;
+  --soft: #e8f3f1;
+  --draft: #fff4d6;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--paper); }
+body.embed { background: transparent; }
+a { color: var(--accent); }
+button { font: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+[hidden] { display: none !important; }
+
+/* draft banner */
+.draft { background: var(--draft); border-bottom: 1px solid #e9d59a; font-size: 14px; padding: 10px 20px; text-align: center; }
+.draft code { background: #fff; padding: 1px 5px; border-radius: 4px; }
+
+/* hero: the landing-page block */
+.hero { padding-top: 44px; padding-bottom: 8px; }
+.eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--soft); padding: 4px 10px; border-radius: 999px; }
+h1 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; margin: 14px 0 10px; letter-spacing: -.01em; }
+.lede { font-size: 18px; color: var(--muted); max-width: 680px; margin: 0; }
+.partners { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 26px 0 6px; }
+.partner { text-align: left; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--ink); border-radius: var(--radius); padding: 14px 16px; cursor: pointer; color: var(--ink); }
+.partner:hover, .partner[aria-pressed=true] { border-color: var(--ink); box-shadow: 0 2px 10px rgba(28, 39, 64, .08); }
+.partner[aria-pressed=true] { background: var(--soft); }
+.partner strong { display: block; font-size: 17px; }
+.partner span { display: block; font-size: 14px; color: var(--muted); }
+.partner em { display: block; font-style: normal; font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 6px; }
+.partner.camps { border-left-color: var(--warm); }
+
+/* toolbar + filters */
+.schedule { padding-top: 22px; padding-bottom: 10px; }
+.toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.tabs { display: inline-flex; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 4px; gap: 4px; }
+.tab { border: 0; background: transparent; color: var(--ink); padding: 8px 16px; border-radius: 9px; cursor: pointer; font-weight: 600; font-size: 15px; }
+.tab[aria-selected=true] { background: var(--ink); color: #fff; }
+.count { margin: 0; color: var(--muted); font-size: 14px; }
+.filters { display: grid; grid-template-columns: minmax(180px, 2fr) repeat(4, minmax(110px, 1fr)) auto; gap: 10px; align-items: end; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin-top: 12px; }
+.filters label { display: flex; flex-direction: column; gap: 3px; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.filters input, .filters select { font: inherit; font-size: 15px; color: var(--ink); text-transform: none; letter-spacing: 0; font-weight: 400; border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; background: #fff; width: 100%; min-width: 0; }
+.hint { font-size: 13px; color: var(--muted); margin: 6px 2px 0; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; padding: 9px 14px; border-radius: 10px; border: 1.5px solid var(--accent); cursor: pointer; text-align: center; }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn.small { padding: 6px 10px; font-size: 14px; }
+.btn.big { padding: 12px 20px; font-size: 17px; }
+.btn.light { background: var(--warm); border-color: var(--warm); color: var(--ink); }
+.btn[disabled], .btn[aria-disabled=true] { opacity: .45; pointer-events: none; }
+.linkish { border: 0; background: none; padding: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.linkish:hover { color: var(--accent); text-decoration: underline; }
+
+/* by location */
+details.loc { background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--v); border-radius: var(--radius); margin-top: 14px; }
+details.loc > summary { list-style: none; cursor: pointer; padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: center; }
+details.loc > summary::-webkit-details-marker { display: none; }
+.loc-name { font-size: 20px; font-weight: 700; }
+.loc-meta { grid-column: 1; font-size: 14px; color: var(--muted); }
+.loc-count { grid-row: 1 / span 2; grid-column: 2; font-size: 14px; font-weight: 600; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+.loc-count::after { content: "  +"; color: var(--muted); }
+details[open] .loc-count::after { content: "  \2212"; }
+.loc-body { padding: 0 18px 18px; }
+.loc-link { font-size: 14px; margin: 0 0 12px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--v); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.tag.camp { color: #b86a00; }
+.badge { font-size: 12px; font-weight: 600; background: var(--soft); color: var(--accent); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.card h3 { font-size: 18px; line-height: 1.3; margin: 0 0 4px; }
+.aud { margin: 0 0 10px; font-weight: 600; }
+.aud small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; }
+.card dl { margin: 0 0 14px; display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font-size: 15px; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+.actions { margin-top: auto; display: grid; grid-template-columns: auto 1fr; gap: 8px; }
+
+/* list */
+.list-head { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 22px 0 8px; }
+.row { display: grid; grid-template-columns: 190px 1fr 90px 170px; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--v); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
+.row-when strong, .row-what .linkish { display: block; font-weight: 700; }
+.row-when span, .row-what span { display: block; font-size: 14px; color: var(--muted); }
+.row-price { font-weight: 600; }
+.row-act { display: flex; gap: 6px; justify-content: flex-end; }
+
+/* calendar */
+.cal-head { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 10px; gap: 8px; }
+.cal-head h3 { margin: 0; font-size: 22px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--line); gap: 1px; }
+.cal-dow { background: var(--ink); color: #fff; font-size: 13px; font-weight: 600; text-align: center; padding: 6px 0; }
+.cal-cell { background: #fff; min-height: 104px; padding: 6px; display: flex; flex-direction: column; gap: 4px; }
+.cal-cell.empty { background: var(--paper); }
+.cal-cell.today { box-shadow: inset 0 0 0 2px var(--accent); }
+.cal-day { font-size: 13px; font-weight: 600; color: var(--muted); }
+.cal-cell.today .cal-day { color: var(--accent); }
+.ev { border: 0; text-align: left; font-size: 12px; line-height: 1.25; padding: 3px 5px; border-radius: 6px; background: color-mix(in srgb, var(--v) 14%, white); border-left: 3px solid var(--v); color: var(--ink); cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ev:hover { background: color-mix(in srgb, var(--v) 26%, white); }
+.agenda { display: none; }
+.ag-day { margin-bottom: 12px; }
+.ag-date { font-weight: 700; margin-bottom: 4px; }
+.ag-day.today .ag-date { color: var(--accent); }
+.ag-item { display: block; width: 100%; text-align: left; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--v); border-radius: 10px; padding: 8px 10px; margin-bottom: 6px; cursor: pointer; color: var(--ink); }
+.ag-item span, .ag-item em { display: block; font-size: 13px; color: var(--muted); font-style: normal; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 12px 2px 0; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--v); margin-right: 6px; }
+
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+/* photo permission */
+.photo { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; background: var(--ink); color: #fff; border-radius: var(--radius); padding: 18px 22px; margin: 28px 0 8px; }
+.photo p { margin: 0; max-width: 680px; }
+.photo strong { display: block; font-size: 17px; }
+
+footer { margin-top: 26px; padding-top: 20px; padding-bottom: 36px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer p { margin: 4px 0; }
+
+/* details dialog */
+dialog { border: 0; border-radius: 18px; padding: 0; width: min(640px, calc(100vw - 24px)); max-height: calc(100vh - 32px); color: var(--ink); box-shadow: 0 20px 60px rgba(0, 0, 0, .25); }
+dialog::backdrop { background: rgba(28, 39, 64, .45); }
+body.embed dialog { position: absolute; top: var(--dlg-top, 16px); margin: 0 auto; max-height: none; }
+.dlg-inner { padding: 24px 26px 22px; border-top: 6px solid var(--v); border-radius: 18px; }
+.dlg-close { position: absolute; right: 12px; top: 12px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: #fff; font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink); }
+dialog h2 { font-size: 24px; line-height: 1.25; margin: 6px 40px 4px 0; }
+.desc { margin: 12px 0 16px; }
+.facts { display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; margin: 0 0 16px; }
+dialog h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 0 0 8px; }
+.dates { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 6px; }
+.dates li { font-size: 13px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+.dates li.past { color: var(--muted); text-decoration: line-through; }
+.dates li.off { background: #fbe9ec; border-color: #f0c7cf; color: #8a2437; }
+.dlg-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.fine { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+
+@media (max-width: 900px) {
+  .filters { grid-template-columns: 1fr 1fr; }
+  .filters .f-search { grid-column: 1 / -1; }
+  .row { grid-template-columns: 1fr auto; }
+  .row-when { grid-column: 1 / -1; }
+  .row-price { text-align: right; }
+  .row-act { grid-column: 1 / -1; justify-content: stretch; }
+  .row-act .btn { flex: 1; }
+}
+@media (max-width: 700px) {
+  .hero { padding-top: 28px; }
+  .cal-grid { display: none; }
+  .agenda { display: block; }
+  .tabs { width: 100%; }
+  .tab { flex: 1; padding: 8px 6px; }
+  .facts { grid-template-columns: 1fr; gap: 0; }
+  .facts dt { margin-top: 8px; }
+  .dlg-inner { padding: 20px 18px; }
+}
+
+</style>
+</head>
+<body>
+<div class="draft" id="draft" hidden></div>
+
+<header class="hero wrap" id="hero">
+  <span class="eyebrow" id="term"></span>
+  <h1 id="h1"></h1>
+  <p class="lede" id="lede"></p>
+  <div class="partners" id="partners"></div>
+</header>
+
+<main class="schedule wrap" id="schedule">
+  <div class="toolbar">
+    <div class="tabs" role="tablist" aria-label="Schedule view">
+      <button class="tab" role="tab" data-view="location">By location</button>
+      <button class="tab" role="tab" data-view="list">List</button>
+      <button class="tab" role="tab" data-view="calendar">Calendar</button>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+
+  <div class="filters">
+    <label class="f-search">Search<input type="search" id="f-q" placeholder="Robotics, coding, camp..." autocomplete="off"></label>
+    <label>Child's age<input type="number" id="f-age" min="3" max="18" inputmode="numeric" placeholder="Any"></label>
+    <label>Grade<select id="f-grade"></select></label>
+    <label>Type<select id="f-type">
+      <option value="all">Classes &amp; camps</option>
+      <option value="class">After-school classes</option>
+      <option value="camp">Break camps</option>
+    </select></label>
+    <label>Where<select id="f-where"></select></label>
+    <button class="btn ghost small" id="f-clear" type="button">Clear</button>
+  </div>
+  <p class="hint">Each class lists either an age or a grade range, as its host site does. Enter both to see everything that fits your child.</p>
+
+  <div id="view"></div>
+  <p class="empty" id="empty" hidden>No classes match those filters. <button class="linkish" id="empty-clear" type="button"><u>Clear filters</u></button></p>
+</main>
+
+<section class="wrap"><div class="photo" id="photo"></div></section>
+<footer class="wrap" id="footer"></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <button class="dlg-close" type="button" aria-label="Close">&times;</button>
+  <div id="dlg-body"></div>
+</dialog>
+
+<noscript>
+  <div class="wrap"><p>This schedule needs JavaScript. You can also find our classes on each host site:</p><p><a href="https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPWNvbXB1Y2hpbGQ=">Campbell Rec</a></p>
+<p><a href="https://www.homeroom.com/sites/saint-andrew-s-episcopal-school-13601-saratoga-ave-saratoga/enrichment">St. Andrew&#39;s Episcopal</a></p>
+<p><a href="https://www.lgsrecreation.org/youth/ase/">LGS Rec</a></p></div>
+</noscript>
+
+<script>window.CC_DATA = {"generated":"2026-09-15","brand":"CompuChild of LGS and Campbell","term":"Fall 2026","servingArea":"Los Gatos, Saratoga, Monte Sereno and Campbell","contactEmail":"amahalingam@compuchild.com","contactPhone":null,"parentFormUrl":null,"draft":[],"venues":[{"key":"saint-andrew-s-episcopal-school","name":"Saint Andrew\u0027s Episcopal School","siteName":"St. Andrew\u0027s Episcopal","address":"13601 Saratoga Ave, Saratoga, CA 95070","catalogUrl":"https://www.homeroom.com/sites/saint-andrew-s-episcopal-school-13601-saratoga-ave-saratoga/enrichment"},{"key":"lexington-elementary-school","name":"Lexington Elementary School","siteName":"LGS Rec","address":"Los Gatos, CA","catalogUrl":"https://www.lgsrecreation.org/youth/ase/"},{"key":"daves-ave-elementary-school","name":"Daves Ave Elementary School","siteName":"LGS Rec","address":"17770 Daves Ave, Monte Sereno, CA 95030","catalogUrl":"https://www.lgsrecreation.org/youth/ase/"},{"key":"campbell-community-center","name":"Campbell Community Center","siteName":"Campbell Rec","address":"1 West Campbell Avenue, Campbell, CA 95008","catalogUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPWNvbXB1Y2hpbGQ="},{"key":"argonaut-elementary-school","name":"Argonaut Elementary School","siteName":"LGS Rec","address":null,"catalogUrl":"https://www.lgsrecreation.org/youth/ase/"},{"key":"lg-youth-rec-center","name":"LG Youth Rec Center","siteName":"LGS Rec","address":null,"catalogUrl":"https://www.lgsrecreation.org/youth/ase/"}],"programs":[{"id":"robo-builders-f26","name":"Robo Builders: Machine That Move","kind":"class","category":"Recreation Classes / After-School","venue":"campbell-community-center","siteName":"Campbell Rec","openTo":"Open to all families","audience":{"kind":"age","from":4,"to":6},"days":"Monday","startTime":"16:30","endTime":"17:30","sessionDates":["2026-09-21","2026-09-28","2026-10-05","2026-10-12","2026-10-19"],"noClassDates":[],"price":189,"fee":12,"registrationUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPTY5MjEuMjA%3D","description":"Young engineers build exciting models that move and make sound using gears, pulleys, and motors. Each session introduces a new building challenge where students design, build, and test their own creations. They\u0027ll develop early engineering thinking, problem-solving skills, and fine motor coordination through hands-on, project-based learning."},{"id":"nature-lab-f26","name":"Nature Lab: Earth Science \u0026 Microscopes","kind":"class","category":"Recreation Classes / After-School","venue":"campbell-community-center","siteName":"Campbell Rec","openTo":"Open to all families","audience":{"kind":"age","from":4,"to":6},"days":"Tuesday","startTime":"16:45","endTime":"17:45","sessionDates":["2026-09-22","2026-09-29","2026-10-06","2026-10-13"],"noClassDates":[],"price":189,"fee":null,"registrationUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPTY5MjEuMjE%3D","description":"Young scientists explore the hidden world under a microscope — examining leaves, insects, minerals, crystals, and more. Students investigate how the earth works through hands-on observation and simple experiments. Every session sparks curiosity and builds scientific thinking skills through real discovery."},{"id":"power-lab-f26","name":"Power Lab: Circuits \u0026 Clean Energy","kind":"class","category":"Recreation Classes / After-School","venue":"campbell-community-center","siteName":"Campbell Rec","openTo":"Open to all families","audience":{"kind":"age","from":7,"to":10},"days":"Tuesday","startTime":"16:45","endTime":"17:45","sessionDates":["2026-10-20","2026-10-27","2026-11-03","2026-11-10"],"noClassDates":[],"price":189,"fee":null,"registrationUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPTY5MjEuMjM%3D","description":"Build real working circuits while exploring how electricity and energy work. The course introduces clean energy concepts including solar, wind, and battery power through hands-on projects. Every session produces a working creation students can demonstrate and explain."},{"id":"money-masters-f26","name":"Money Masters: From Savings to Stocks","kind":"class","category":"Recreation Classes / After-School","venue":"campbell-community-center","siteName":"Campbell Rec","openTo":"Open to all families","audience":{"kind":"age","from":7,"to":10},"days":"Monday","startTime":"16:30","endTime":"17:30","sessionDates":["2026-10-26","2026-11-02","2026-11-09","2026-11-16"],"noClassDates":[],"price":189,"fee":null,"registrationUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPTY5MjEuMjI%3D","description":"Students go on a 4-week journey through the world of money: from everyday budgeting and savings to the stock market. They\u0027ll learn how currency works, why saving matters, what stocks and bonds are, and how smart investors think about risk and reward. Through interactive games and simulations, students build a mock investment portfolio and present their strategy in the final session."},{"id":"money-masters-camp-f26","name":"Money Masters: From Savings to Stocks (Thanksgiving Camp)","kind":"camp","category":"School Break Camps","venue":"campbell-community-center","siteName":"Campbell Rec","openTo":"Open to all families","audience":{"kind":"age","from":7,"to":12},"days":["Monday","Tuesday","Wednesday"],"startTime":"09:00","endTime":"12:00","sessionDates":["2026-11-23","2026-11-24","2026-11-25"],"noClassDates":[],"price":241,"fee":null,"registrationUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPTY5MjEuMjQ%3D","description":null},{"id":"ai-startup-lab-camp-f26","name":"AI Startup Lab (Winter Camp)","kind":"camp","category":"School Break Camps","venue":"campbell-community-center","siteName":"Campbell Rec","openTo":"Open to all families","audience":{"kind":"age","from":11,"to":14},"days":["Monday","Tuesday","Wednesday"],"startTime":"09:00","endTime":"12:00","sessionDates":["2026-12-21","2026-12-22","2026-12-23"],"noClassDates":[],"price":323,"fee":null,"registrationUrl":"https://secure.rec1.com/CA/campbell-ca/catalog/index/6aecd37adbeaa6136c4f557f406b3871?filter=c2VhcmNoPTY5MjEuMjU%3D","description":"Students step into the shoes of a tech entrepreneur. Over 3 days, they\u0027ll learn how artificial intelligence works through hands on prompt engineering, then design and build their own custom AI agent, whether that\u0027s a homework helper, quiz master, creative writing coach, or any tool they imagine. On the final day, students pitch their AI powered startup Shark Tank style, presenting a working product they built themselves. No coding experience required."},{"id":"lgs-lexington-earth-science-f26","name":"Earth Science Nature Lab: Nature Under The Lens","kind":"class","category":"After-School Enrichment","venue":"lexington-elementary-school","siteName":"LGS Rec","openTo":"For Lexington Elementary School students","audience":{"kind":"age","from":4,"to":7},"days":"Monday","startTime":"14:45","endTime":"15:45","sessionDates":["2026-09-14","2026-09-21","2026-10-05","2026-10-12","2026-10-19","2026-10-26","2026-11-09","2026-11-16"],"noClassDates":["2026-09-28","2026-11-02"],"price":253.36,"fee":20,"registrationUrl":"https://losgatos.perfectmind.com/22167/Clients/BookMe4LandingPages/CoursesLandingPage?redirectedFromEmbededMode=False\u0026widgetId=07d6cdf1-d56f-4ab8-9cde-cd4d6574bd46\u0026courseId=582d8ac7-8221-40e9-ac98-73004642d31d","description":"Young scientists explore the hidden world under a microscope, examining leaves, insects, minerals, and more. Hands-on earth science experiments build curiosity, observation skills, and scientific thinking."},{"id":"lgs-daves-financial-awareness-f26","name":"Financial Awareness: From Barter to Bitcoin","kind":"class","category":"After-School Enrichment","venue":"daves-ave-elementary-school","siteName":"LGS Rec","openTo":"For Daves Ave Elementary School students","audience":{"kind":"age","from":7,"to":11},"days":"Tuesday","startTime":"14:45","endTime":"15:45","sessionDates":["2026-09-15","2026-09-22","2026-10-06","2026-10-13","2026-10-20","2026-10-27","2026-11-03","2026-11-10","2026-11-17"],"noClassDates":["2026-09-29"],"price":213.75,"fee":25,"registrationUrl":"https://losgatos.perfectmind.com/22167/Clients/BookMe4LandingPages/CoursesLandingPage?redirectedFromEmbededMode=False\u0026widgetId=07d6cdf1-d56f-4ab8-9cde-cd4d6574bd46\u0026courseId=78cd7815-128f-489a-bf8c-553d75cb15d7","description":"A fun, interactive course in financial literacy. Students travel from ancient bartering systems to modern blockchain-based currencies such as Bitcoin, building an understanding of currency, exchange rates, interest rates, supply and demand, needs and wants, budgeting, taxes, and net worth. Engaging activities and practical lessons give students a solid foundation for a financially savvy future."},{"id":"lgs-code-explorers-camp-nov11","name":"Code Explorers - Tile Coding Adventures (Single Day)","kind":"camp","category":"School Break Camps","venue":"argonaut-elementary-school","siteName":"LGS Rec","openTo":"Open to all families","audience":{"kind":"age","from":5,"to":7},"days":"Wednesday","startTime":"09:00","endTime":"12:00","sessionDates":["2026-11-11"],"noClassDates":[],"price":50,"fee":10,"registrationUrl":"https://losgatos.perfectmind.com/22167/Clients/BookMe4LandingPages/CoursesLandingPage?redirectedFromEmbededMode=False\u0026widgetId=13c3eb58-e830-495d-96fa-b53351b537a9\u0026courseId=7bc51f07-cadd-4302-ba88-2a7b0e198741","description":"An introduction to coding logic designed for young learners — no screens needed. Children develop sequencing, pattern recognition, and problem-solving skills through interactive tile-based activities that make coding feel like a game."},{"id":"lgs-nature-lab-3d-camp-thanksgiving","name":"Nature Lab - Under the Lens \u0026 3D Creators (Thanksgiving Camp)","kind":"camp","category":"School Break Camps","venue":"argonaut-elementary-school","siteName":"LGS Rec","openTo":"Open to all families","audience":{"kind":"age","from":7,"to":10},"days":["Monday","Tuesday","Wednesday"],"startTime":"09:00","endTime":"16:00","sessionDates":["2026-11-23","2026-11-24","2026-11-25"],"noClassDates":[],"price":240,"fee":30,"registrationUrl":"https://losgatos.perfectmind.com/22167/Clients/BookMe4LandingPages/CoursesLandingPage?redirectedFromEmbededMode=False\u0026widgetId=13c3eb58-e830-495d-96fa-b53351b537a9\u0026courseId=bc89f2a2-fa3f-46a9-bb24-ecb293d3b11c","description":"Morning: young scientists explore the hidden world under a microscope, examining leaves, insects, minerals, and more, through hands-on earth science experiments. Afternoon: students use 3D printing pens to design toys, objects, parts, and artwork while learning about additive manufacturing and good design — aesthetics, structural stability, materials, and functionality."},{"id":"lgs-ai-startup-academy-camp-dec21","name":"AI Startup Academy - AI/MIL \u0026 Design Your Startup VC Pitch (Winter Camp, week 1)","kind":"camp","category":"School Break Camps","venue":"lg-youth-rec-center","siteName":"LGS Rec","openTo":"Open to all families","audience":{"kind":"age","from":9,"to":13},"days":["Monday","Tuesday","Wednesday"],"startTime":"09:00","endTime":"16:00","sessionDates":["2026-12-21","2026-12-22","2026-12-23"],"noClassDates":[],"price":240,"fee":30,"registrationUrl":"https://losgatos.perfectmind.com/22167/Clients/BookMe4LandingPages/CoursesLandingPage?redirectedFromEmbededMode=False\u0026widgetId=13c3eb58-e830-495d-96fa-b53351b537a9\u0026courseId=7ebc2bae-4b67-4771-a4df-28a8e561fb18","description":"Morning, AI/ML: students master prompt engineering, then design and build their own working AI agent from scratch — a homework helper, storytelling buddy, science quiz master, or hometown travel guide, each with its own personality and purpose. Afternoon, Design Your Startup VC Pitch: students use their agent to develop a pitch deck to win funding for their startup."},{"id":"lgs-ai-startup-academy-camp-dec28","name":"AI Startup Academy - AI/MIL \u0026 Design Your Startup VC Pitch (Winter Camp, week 2)","kind":"camp","category":"School Break Camps","venue":"argonaut-elementary-school","siteName":"LGS Rec","openTo":"Open to all families","audience":{"kind":"age","from":9,"to":13},"days":["Monday","Tuesday","Wednesday"],"startTime":"09:00","endTime":"16:00","sessionDates":["2026-12-28","2026-12-29","2026-12-30"],"noClassDates":[],"price":240,"fee":30,"registrationUrl":"https://losgatos.perfectmind.com/22167/Clients/BookMe4LandingPages/CoursesLandingPage?redirectedFromEmbededMode=False\u0026widgetId=13c3eb58-e830-495d-96fa-b53351b537a9\u0026courseId=8191af51-7ae5-485d-a24a-f9d3563d7329","description":"Morning, AI/ML: students master prompt engineering, then design and build their own working AI agent from scratch — a homework helper, storytelling buddy, science quiz master, or hometown travel guide, each with its own personality and purpose. Afternoon, Design Your Startup VC Pitch: students use their agent to develop a pitch deck to win funding for their startup."},{"id":"sa-investment-f26","name":"Investment in Stocks, Bonds \u0026 More (6th-8th)","kind":"class","category":"After-School Enrichment","venue":"saint-andrew-s-episcopal-school","siteName":"St. Andrew\u0027s Episcopal","openTo":"For Saint Andrew\u0027s Episcopal School students","audience":{"kind":"grade","from":6,"to":8},"days":"Wednesday","startTime":"15:15","endTime":"16:15","sessionDates":["2026-09-02","2026-09-09","2026-09-16","2026-09-23","2026-09-30","2026-10-07","2026-10-14","2026-10-21"],"noClassDates":[],"price":375,"fee":null,"registrationUrl":"https://www.homeroom.com/activities/113265","description":"Students launch a virtual lemonade stand and grow it into a financial empire over 8 weeks. Each week layers on a new concept — compound interest, risk, bonds, stocks, real estate, taxes — all through the same simulation. Ends with a live auction using play money they earned all program."},{"id":"sa-robo-builders-f26","name":"Robo Builders: Machines That Move (3rd-5th)","kind":"class","category":"After-School Enrichment","venue":"saint-andrew-s-episcopal-school","siteName":"St. Andrew\u0027s Episcopal","openTo":"For Saint Andrew\u0027s Episcopal School students","audience":{"kind":"grade","from":3,"to":5},"days":"Tuesday","startTime":"15:00","endTime":"16:00","sessionDates":["2026-10-27","2026-11-03","2026-11-10","2026-11-17","2026-12-01","2026-12-08","2026-12-15"],"noClassDates":["2026-11-24"],"price":350,"fee":null,"registrationUrl":"https://www.homeroom.com/activities/113266","description":"Children build exciting models that move and make sound using gears, pulleys, and motors. They\u0027ll program their creations to perform tasks, developing early engineering and problem-solving skills through hands-on, project-based learning."},{"id":"sa-starter-pitch-f26","name":"Starter Pitch for VCs (6th-8th)","kind":"class","category":"After-School Enrichment","venue":"saint-andrew-s-episcopal-school","siteName":"St. Andrew\u0027s Episcopal","openTo":"For Saint Andrew\u0027s Episcopal School students","audience":{"kind":"grade","from":6,"to":8},"days":"Wednesday","startTime":"15:15","endTime":"16:15","sessionDates":["2026-10-28","2026-11-04","2026-11-11","2026-11-18","2026-12-02","2026-12-09","2026-12-16"],"noClassDates":["2026-11-25"],"price":350,"fee":null,"registrationUrl":"https://www.homeroom.com/activities/113267","description":"Students find a real problem, build a working prototype, create a brand, and pitch on Demo Day. Recent participants built a racket sport coaching device, a portable chair solution, and an ice skating lace tool. One 12-year-old refused to sell on Amazon to protect their IP."}]};</script>
+<script>
+// CompuChild class schedule: landing-page block with location, list and
+// calendar views, filters, and a details view per class.
+//
+// Data comes from window.CC_DATA, which tools/build-landing.ps1 writes from
+// config/. Everything date-related is evaluated against "today" in the
+// visitor's browser, so finished classes drop off and "In progress" badges
+// stay correct between rebuilds. Append ?asof=YYYY-MM-DD to preview a date,
+// and ?embed=1 when the page is shown inside an iframe on another site.
+(function () {
+  'use strict';
+
+  var D = window.CC_DATA;
+  var params = new URLSearchParams(location.search);
+  var EMBED = params.get('embed') === '1';
+  var TODAY = /^\d{4}-\d{2}-\d{2}$/.test(params.get('asof') || '') ? params.get('asof') : isoOf(new Date());
+
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var COLORS = ['#0e7c74', '#c7641a', '#4b57b8', '#b83a64', '#6b7d1f', '#2479a8', '#7a4fb0', '#a0522d'];
+  var NDASH = '–';
+
+  // ------------------------------------------------------------ formatting
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function isoOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parse(iso) { var p = iso.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function fmtDate(iso) { var d = parse(iso); return MONTHS[d.getMonth()] + ' ' + d.getDate(); }
+  function fmtDateDow(iso) { var d = parse(iso); return DOW[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate(); }
+  function fmtRange(a, b) {
+    if (a === b) return fmtDateDow(a);
+    var x = parse(a), y = parse(b);
+    if (x.getMonth() === y.getMonth() && x.getFullYear() === y.getFullYear()) return MONTHS[x.getMonth()] + ' ' + x.getDate() + NDASH + y.getDate();
+    return fmtDate(a) + ' ' + NDASH + ' ' + fmtDate(b);
+  }
+  function clock(hhmm) { var p = hhmm.split(':'), h = +p[0]; return { t: (h % 12 || 12) + ':' + p[1], ap: h >= 12 ? 'PM' : 'AM' }; }
+  function fmtTimeRange(s, e) {
+    var a = clock(s), b = clock(e);
+    return a.ap === b.ap ? a.t + NDASH + b.t + ' ' + b.ap : a.t + ' ' + a.ap + ' ' + NDASH + ' ' + b.t + ' ' + b.ap;
+  }
+  function shortTime(hhmm) { var c = clock(hhmm); return c.t.replace(':00', '') + (c.ap === 'AM' ? 'a' : 'p'); }
+  function money(n) { return '$' + (Math.round(n) === n ? n : n.toFixed(2)); }
+  // Grade and age are never converted into each other: a class shows the one
+  // its host site published.
+  function audienceLabel(a) {
+    if (!a) return 'Ages/grades to be confirmed';
+    if (a.kind === 'grade') return 'Grades ' + (a.from === 0 ? 'K' : a.from) + NDASH + a.to;
+    return 'Ages ' + a.from + NDASH + a.to;
+  }
+  function daysLabel(p) {
+    var d = p.days;
+    if (p.kind === 'camp') return d.length === 1 ? d[0].slice(0, 3) : d[0].slice(0, 3) + NDASH + d[d.length - 1].slice(0, 3);
+    return d[0] + 's';
+  }
+  function unit(p) {
+    var n = p.sessionDates.length;
+    return p.kind === 'camp' ? (n === 1 ? 'day' : 'days') : (n === 1 ? 'session' : 'sessions');
+  }
+  function priceLabel(p) {
+    if (p.price == null) return '';
+    return money(p.price) + (p.fee ? ' + ' + money(p.fee) + ' materials' : '');
+  }
+  function shortName(p) { return p.name.split(/\s[-–(]|:/)[0].trim(); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+
+  // ------------------------------------------------------------------ data
+  var venues = {};
+  D.venues.forEach(function (v, i) { v.color = COLORS[i % COLORS.length]; venues[v.key] = v; });
+
+  var programs = D.programs
+    .filter(function (p) { return p.sessionDates[p.sessionDates.length - 1] >= TODAY; })
+    .map(function (p) {
+      p.first = p.sessionDates[0];
+      p.last = p.sessionDates[p.sessionDates.length - 1];
+      p.inProgress = p.first <= TODAY;
+      p.v = venues[p.venue];
+      return p;
+    });
+
+  var byId = {};
+  programs.forEach(function (p) { byId[p.id] = p; });
+
+  function sortKey(p) { return (p.inProgress ? '0' : '1') + p.first + p.startTime; }
+  function bySchedule(a, b) { return sortKey(a) < sortKey(b) ? -1 : 1; }
+
+  // ----------------------------------------------------------------- state
+  var state = { view: 'location', q: '', age: '', grade: '', type: 'all', where: 'all', month: null };
+
+  function filtersActive() {
+    return state.q || state.age !== '' || state.grade !== '' || state.type !== 'all' || state.where !== 'all';
+  }
+
+  function matches(p) {
+    if (state.type !== 'all' && p.kind !== state.type) return false;
+    if (state.where.indexOf('site:') === 0 && p.siteName !== state.where.slice(5)) return false;
+    if (state.where.indexOf('venue:') === 0 && p.venue !== state.where.slice(6)) return false;
+    if (state.q) {
+      var hay = [p.name, p.description, p.v.name, p.siteName].join(' ').toLowerCase();
+      if (hay.indexOf(state.q.toLowerCase()) < 0) return false;
+    }
+    // Age only filters classes described by age, grade only those described
+    // by grade; neither is translated into the other.
+    if (p.audience && p.audience.kind === 'age' && state.age !== '') {
+      var a = +state.age;
+      if (a < p.audience.from || a > p.audience.to) return false;
+    }
+    if (p.audience && p.audience.kind === 'grade' && state.grade !== '') {
+      var g = +state.grade;
+      if (g < p.audience.from || g > p.audience.to) return false;
+    }
+    return true;
+  }
+
+  // --------------------------------------------------------------- elements
+  var $ = function (id) { return document.getElementById(id); };
+  var view = $('view'), count = $('count'), empty = $('empty'), dlg = $('dlg'), dlgBody = $('dlg-body');
+
+  // ------------------------------------------------------------------ pieces
+  function registerBtn(p, big) {
+    if (!p.registrationUrl) return '';
+    return '<a class="btn' + (big ? ' big' : '') + '" href="' + esc(p.registrationUrl) + '" target="_blank" rel="noopener">' +
+      (p.inProgress ? 'Check availability' : 'Register') + ' <span aria-hidden="true">&rarr;</span></a>';
+  }
+
+  function card(p) {
+    return '<article class="card" style="--v:' + p.v.color + '">' +
+      '<div class="card-top"><span class="tag' + (p.kind === 'camp' ? ' camp' : '') + '">' + (p.kind === 'camp' ? 'Break camp' : 'After-school class') + '</span>' +
+      (p.inProgress ? '<span class="badge">In progress</span>' : '') + '</div>' +
+      '<h3><button class="linkish" data-open="' + esc(p.id) + '">' + esc(p.name) + '</button></h3>' +
+      '<p class="aud">' + esc(audienceLabel(p.audience)) + '<small>' + esc(p.openTo) + '</small></p>' +
+      '<dl><dt>When</dt><dd>' + esc(daysLabel(p) + ', ' + fmtTimeRange(p.startTime, p.endTime)) + '</dd>' +
+      '<dt>Dates</dt><dd>' + esc(fmtRange(p.first, p.last)) + ' &middot; ' + p.sessionDates.length + ' ' + unit(p) + '</dd>' +
+      (priceLabel(p) ? '<dt>Price</dt><dd>' + esc(priceLabel(p)) + '</dd>' : '') +
+      '</dl>' +
+      '<div class="actions"><button class="btn ghost" data-open="' + esc(p.id) + '">Details</button>' + registerBtn(p) + '</div>' +
+      '</article>';
+  }
+
+  // ------------------------------------------------------------------- views
+  function renderLocation(list) {
+    var groups = {};
+    list.forEach(function (p) { (groups[p.venue] = groups[p.venue] || []).push(p); });
+    var keys = D.venues.map(function (v) { return v.key; }).filter(function (k) { return groups[k]; });
+    var open = window.matchMedia('(min-width: 720px)').matches || keys.length <= 2 || filtersActive();
+    return keys.map(function (k) {
+      var v = venues[k], items = groups[k].sort(bySchedule);
+      var camps = items.filter(function (p) { return p.kind === 'camp'; }).length, classes = items.length - camps;
+      var counts = [classes ? plural(classes, 'class', 'classes') : '', camps ? plural(camps, 'camp', 'camps') : ''].filter(Boolean).join(' · ');
+      var catalog = v.catalogUrl ? '<p class="loc-link"><a href="' + esc(v.catalogUrl) + '" target="_blank" rel="noopener">See ' + esc(v.siteName) + '’s own listings &rarr;</a></p>' : '';
+      return '<details class="loc" style="--v:' + v.color + '"' + (open ? ' open' : '') + '>' +
+        '<summary><span class="loc-name">' + esc(v.name) + '</span>' +
+        '<span class="loc-meta">' + esc(v.siteName) + (v.address ? ' · ' + esc(v.address) : '') + '</span>' +
+        '<span class="loc-count">' + counts + '</span></summary>' +
+        '<div class="loc-body">' + catalog + '<div class="grid">' + items.map(card).join('') + '</div></div></details>';
+    }).join('');
+  }
+
+  function renderList(list) {
+    var html = '', heading = '';
+    list.slice().sort(bySchedule).forEach(function (p) {
+      var h = p.inProgress ? 'Running now' : 'Starting in ' + MONTHS_LONG[parse(p.first).getMonth()];
+      if (h !== heading) { html += '<h3 class="list-head">' + h + '</h3>'; heading = h; }
+      html += '<div class="row" style="--v:' + p.v.color + '">' +
+        '<div class="row-when"><strong>' + esc(fmtRange(p.first, p.last)) + '</strong><span>' + esc(daysLabel(p) + ', ' + fmtTimeRange(p.startTime, p.endTime)) + '</span></div>' +
+        '<div class="row-what"><button class="linkish" data-open="' + esc(p.id) + '">' + esc(p.name) + '</button>' +
+        '<span>' + esc(audienceLabel(p.audience)) + ' · ' + esc(p.v.name) + (p.kind === 'camp' ? ' · Break camp' : '') + '</span></div>' +
+        '<div class="row-price">' + (p.price != null ? esc(money(p.price)) : '') + '</div>' +
+        '<div class="row-act"><button class="btn ghost small" data-open="' + esc(p.id) + '">Details</button>' + registerBtn(p) + '</div>' +
+        '</div>';
+    });
+    return html;
+  }
+
+  function shiftMonth(ym, delta) {
+    var d = new Date(+ym.slice(0, 4), +ym.slice(5, 7) - 1 + delta, 1);
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1);
+  }
+
+  function renderCalendar(list) {
+    var meetings = [];
+    list.forEach(function (p) { p.sessionDates.forEach(function (d) { meetings.push({ d: d, p: p }); }); });
+    if (!meetings.length) return '';
+    meetings.sort(function (a, b) { return (a.d + a.p.startTime) < (b.d + b.p.startTime) ? -1 : 1; });
+
+    var firstM = meetings[0].d.slice(0, 7), lastM = meetings[meetings.length - 1].d.slice(0, 7), nowM = TODAY.slice(0, 7);
+    if (!state.month || state.month < firstM || state.month > lastM) {
+      state.month = nowM >= firstM && nowM <= lastM ? nowM : firstM;
+    }
+    var ym = state.month, y = +ym.slice(0, 4), m = +ym.slice(5, 7) - 1;
+    var days = {};
+    meetings.forEach(function (x) { if (x.d.slice(0, 7) === ym) (days[x.d] = days[x.d] || []).push(x.p); });
+
+    var prev = shiftMonth(ym, -1), next = shiftMonth(ym, 1);
+    var head = '<div class="cal-head">' +
+      '<button class="btn ghost small" data-month="' + prev + '"' + (prev < firstM ? ' disabled' : '') + '>&larr; ' + MONTHS[+prev.slice(5) - 1] + '</button>' +
+      '<h3>' + MONTHS_LONG[m] + ' ' + y + '</h3>' +
+      '<button class="btn ghost small" data-month="' + next + '"' + (next > lastM ? ' disabled' : '') + '>' + MONTHS[+next.slice(5) - 1] + ' &rarr;</button></div>';
+
+    var cells = DOW.map(function (d) { return '<div class="cal-dow">' + d + '</div>'; }).join('');
+    var lead = new Date(y, m, 1).getDay(), inMonth = new Date(y, m + 1, 0).getDate();
+    for (var i = 0; i < lead; i++) cells += '<div class="cal-cell empty"></div>';
+    for (var day = 1; day <= inMonth; day++) {
+      var iso = y + '-' + pad(m + 1) + '-' + pad(day);
+      cells += '<div class="cal-cell' + (iso === TODAY ? ' today' : '') + '"><span class="cal-day">' + day + '</span>' +
+        (days[iso] || []).map(function (p) {
+          return '<button class="ev" style="--v:' + p.v.color + '" data-open="' + esc(p.id) + '" title="' + esc(p.name + ' · ' + p.v.name) + '">' +
+            '<b>' + shortTime(p.startTime) + '</b> ' + esc(shortName(p)) + '</button>';
+        }).join('') + '</div>';
+    }
+
+    var agenda = Object.keys(days).sort().map(function (iso) {
+      return '<div class="ag-day' + (iso === TODAY ? ' today' : '') + '"><div class="ag-date">' + esc(fmtDateDow(iso)) + '</div>' +
+        days[iso].map(function (p) {
+          return '<button class="ag-item" style="--v:' + p.v.color + '" data-open="' + esc(p.id) + '">' +
+            '<span>' + esc(fmtTimeRange(p.startTime, p.endTime)) + '</span><strong>' + esc(p.name) + '</strong><em>' + esc(p.v.name) + '</em></button>';
+        }).join('') + '</div>';
+    }).join('') || '<p class="empty">No classes this month.</p>';
+
+    var shown = {};
+    list.forEach(function (p) { shown[p.venue] = true; });
+    var legend = '<div class="legend">' + D.venues.filter(function (v) { return shown[v.key]; }).map(function (v) {
+      return '<span style="--v:' + v.color + '"><i></i>' + esc(v.name) + '</span>';
+    }).join('') + '</div>';
+
+    return head + '<div class="cal-grid">' + cells + '</div><div class="agenda">' + agenda + '</div>' + legend;
+  }
+
+  // ------------------------------------------------------------------ render
+  function render() {
+    var list = programs.filter(matches);
+    count.textContent = 'Showing ' + list.length + ' of ' + plural(programs.length, 'class or camp', 'classes and camps');
+    empty.hidden = list.length > 0;
+    view.innerHTML = list.length ? (state.view === 'list' ? renderList(list) : state.view === 'calendar' ? renderCalendar(list) : renderLocation(list)) : '';
+    document.querySelectorAll('.tab').forEach(function (t) { t.setAttribute('aria-selected', t.dataset.view === state.view ? 'true' : 'false'); });
+    document.querySelectorAll('.partner').forEach(function (b) {
+      var on = (b.dataset.where && b.dataset.where === state.where) || (b.dataset.type && b.dataset.type === state.type && state.where === 'all');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    syncControls();
+    postHeight();
+  }
+
+  function syncControls() {
+    $('f-q').value = state.q;
+    $('f-age').value = state.age;
+    $('f-grade').value = state.grade;
+    $('f-type').value = state.type;
+    $('f-where').value = state.where;
+  }
+
+  // ------------------------------------------------------------------ details
+  function openDetail(id, anchorY) {
+    var p = byId[id];
+    if (!p) return;
+    var rows = [
+      ['When', daysLabel(p) + ', ' + fmtTimeRange(p.startTime, p.endTime)],
+      ['Dates', fmtRange(p.first, p.last) + ' · ' + p.sessionDates.length + ' ' + unit(p)],
+      p.noClassDates.length ? ['No class', p.noClassDates.map(fmtDate).join(', ')] : null,
+      priceLabel(p) ? ['Price', priceLabel(p)] : null,
+      ['Open to', p.openTo]
+    ].filter(Boolean);
+    var mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.v.name + ', ' + (p.v.address || 'CA'));
+    var allDates = p.sessionDates.map(function (d) { return { d: d, off: false }; })
+      .concat(p.noClassDates.map(function (d) { return { d: d, off: true }; }))
+      .sort(function (a, b) { return a.d < b.d ? -1 : 1; });
+
+    dlgBody.innerHTML = '<div class="dlg-inner" style="--v:' + p.v.color + '">' +
+      '<span class="tag' + (p.kind === 'camp' ? ' camp' : '') + '">' + (p.kind === 'camp' ? 'Break camp' : 'After-school class') + '</span>' +
+      (p.inProgress ? ' <span class="badge">In progress</span>' : '') +
+      '<h2 id="dlg-title">' + esc(p.name) + '</h2>' +
+      '<p class="aud">' + esc(audienceLabel(p.audience)) + '</p>' +
+      (p.description ? '<p class="desc">' + esc(p.description) + '</p>' : '') +
+      '<dl class="facts">' + rows.map(function (r) { return '<dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('') +
+      '<dt>Where</dt><dd>' + esc(p.v.name) + '<br><span class="count">' + esc(p.siteName) + (p.v.address ? ' · ' + esc(p.v.address) : '') +
+      '</span><br><a href="' + mapUrl + '" target="_blank" rel="noopener">Map &rarr;</a></dd></dl>' +
+      '<h3>Schedule</h3><ul class="dates">' + allDates.map(function (x) {
+        return '<li class="' + (x.off ? 'off' : x.d < TODAY ? 'past' : '') + '">' + (x.off ? 'No class ' : '') + esc(fmtDateDow(x.d)) + '</li>';
+      }).join('') + '</ul>' +
+      '<div class="dlg-actions">' + registerBtn(p, true) + '<button class="btn ghost" data-copy>Copy link to this class</button></div>' +
+      '<p class="fine">Registration, payment and refunds are handled by ' + esc(p.siteName) + '.</p></div>';
+
+    if (EMBED) document.body.style.setProperty('--dlg-top', Math.max(16, (anchorY || 0) - 120) + 'px');
+    if (!dlg.open) dlg.showModal();
+    setHash('class=' + encodeURIComponent(id));
+  }
+
+  function setHash(h) { history.replaceState(null, '', '#' + h); }
+
+  // Every way of closing goes through here. The dialog's own 'close' event is
+  // not reliable in every browser, so the address is reset explicitly.
+  function closeDetail() {
+    if (dlg.open) dlg.close();
+    setHash('view=' + state.view);
+  }
+
+  // ------------------------------------------------------------- controls
+  function buildControls() {
+    var where = $('f-where');
+    where.innerHTML = '<option value="all">All locations</option>' + unique(D.venues.map(function (v) { return v.siteName; })).map(function (site) {
+      var vs = D.venues.filter(function (v) { return v.siteName === site; });
+      return '<optgroup label="' + esc(site) + '"><option value="site:' + esc(site) + '">All ' + esc(site) + '</option>' +
+        vs.map(function (v) { return '<option value="venue:' + esc(v.key) + '">' + esc(v.name) + '</option>'; }).join('') + '</optgroup>';
+    }).join('');
+
+    var grade = $('f-grade');
+    grade.innerHTML = '<option value="">Any</option><option value="0">K</option>' +
+      [1, 2, 3, 4, 5, 6, 7, 8].map(function (g) { return '<option value="' + g + '">' + g + '</option>'; }).join('');
+
+    $('partners').innerHTML = unique(programs.map(function (p) { return p.siteName; })).map(function (site) {
+      var items = programs.filter(function (p) { return p.siteName === site; });
+      var camps = items.filter(function (p) { return p.kind === 'camp'; }).length, classes = items.length - camps;
+      var places = unique(items.map(function (p) { return p.v.name; }));
+      return '<button class="partner" data-where="site:' + esc(site) + '" style="border-left-color:' + venues[items[0].venue].color + '">' +
+        '<strong>' + esc(site) + '</strong>' +
+        '<span>' + [classes ? plural(classes, 'class', 'classes') : '', camps ? plural(camps, 'camp', 'camps') : ''].filter(Boolean).join(' · ') + '</span>' +
+        '<span>' + esc(places.join(', ')) + '</span><em>' + D.term + ' schedule &rarr;</em></button>';
+    }).join('') + campsButton();
+  }
+
+  // The camp dates themselves, e.g. "Nov 11 · Nov 23–25 · Dec 21–23", so the
+  // label can never drift from the schedule.
+  function campsButton() {
+    var camps = programs.filter(function (p) { return p.kind === 'camp'; }).sort(bySchedule);
+    if (!camps.length) return '';
+    var spans = unique(camps.map(function (p) {
+      return p.first === p.last ? fmtDate(p.first) : fmtRange(p.first, p.last);
+    }));
+    return '<button class="partner camps" data-type="camp"><strong>School break camps</strong>' +
+      '<span>' + plural(camps.length, 'camp', 'camps') + '</span>' +
+      '<span>' + esc(spans.join(' · ')) + '</span><em>See all camps &rarr;</em></button>';
+  }
+
+  function unique(arr) { return arr.filter(function (x, i) { return arr.indexOf(x) === i; }); }
+
+  function wire() {
+    $('f-q').addEventListener('input', function (e) { state.q = e.target.value.trim(); render(); });
+    $('f-age').addEventListener('input', function (e) { state.age = e.target.value; render(); });
+    $('f-grade').addEventListener('change', function (e) { state.grade = e.target.value; render(); });
+    $('f-type').addEventListener('change', function (e) { state.type = e.target.value; render(); });
+    $('f-where').addEventListener('change', function (e) { state.where = e.target.value; render(); });
+    function clear() { state.q = ''; state.age = ''; state.grade = ''; state.type = 'all'; state.where = 'all'; render(); }
+    $('f-clear').addEventListener('click', clear);
+    $('empty-clear').addEventListener('click', clear);
+
+    document.querySelectorAll('.tab').forEach(function (t) {
+      t.addEventListener('click', function () { state.view = t.dataset.view; setHash('view=' + state.view); render(); });
+    });
+
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('[data-open],[data-month],[data-copy],.partner,.dlg-close');
+      if (!el) return;
+      if (el.classList.contains('dlg-close')) { closeDetail(); return; }
+      if (el.hasAttribute('data-open')) { openDetail(el.getAttribute('data-open'), e.pageY); return; }
+      if (el.hasAttribute('data-month')) { state.month = el.getAttribute('data-month'); render(); return; }
+      if (el.hasAttribute('data-copy')) {
+        var done = function () { el.textContent = 'Link copied'; };
+        if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, function () { window.prompt('Copy this link:', location.href); });
+        else window.prompt('Copy this link:', location.href);
+        return;
+      }
+      if (el.classList.contains('partner')) {
+        if (el.getAttribute('aria-pressed') === 'true') { state.where = 'all'; state.type = 'all'; }
+        else if (el.dataset.where) { state.where = el.dataset.where; state.type = 'all'; }
+        else { state.type = el.dataset.type; state.where = 'all'; }
+        render();
+        $('schedule').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) closeDetail(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && dlg.open) { e.preventDefault(); closeDetail(); }
+    });
+    if (window.ResizeObserver) new ResizeObserver(postHeight).observe(document.body);
+  }
+
+  // When embedded in an iframe, tell the host page how tall to make it.
+  function postHeight() {
+    if (EMBED && window.parent !== window) {
+      window.parent.postMessage({ type: 'compuchild-schedule-height', height: document.documentElement.scrollHeight }, '*');
+    }
+  }
+
+  // ------------------------------------------------------------------- page
+  function renderShell() {
+    document.body.classList.toggle('embed', EMBED);
+    $('hero').hidden = EMBED;
+    $('term').textContent = D.term;
+    $('h1').textContent = D.term + ' classes & camps';
+    $('lede').textContent = 'Robotics, coding, science and money-smarts for kids' + (D.servingArea ? ' in ' + D.servingArea : '') +
+      '. Pick a location, find a class, then register directly with the school or rec center that hosts it.';
+
+    if (D.draft && D.draft.length) {
+      $('draft').hidden = false;
+      $('draft').innerHTML = '<strong>DRAFT</strong> &middot; not ready to publish. Fill in <code>config/landing.json</code>: ' + D.draft.map(esc).join(', ');
+    }
+
+    var formCopy = '<p><strong>Enrolled? Complete the parent form.</strong>One form per child, before their first class or camp day. It covers our program agreement and photo permission. Without photo permission, we only photograph hands and projects, never faces.</p>';
+    // Until a form link is configured the whole section stays hidden, so the
+    // public page never shows a dead button.
+    $('photo').parentElement.hidden = !D.parentFormUrl;
+    if (D.parentFormUrl) {
+      $('photo').innerHTML = formCopy + '<a class="btn light" href="' + esc(D.parentFormUrl) + '" target="_blank" rel="noopener">Parent form</a>';
+    }
+
+    var contact = [D.contactEmail ? '<a href="mailto:' + esc(D.contactEmail) + '">' + esc(D.contactEmail) + '</a>' : '', D.contactPhone ? esc(D.contactPhone) : ''].filter(Boolean);
+    $('footer').innerHTML = (contact.length ? '<p>Questions? ' + contact.join(' &middot; ') + '</p>' : '') +
+      '<p>' + esc(D.brand) + '. Registration, payment and refunds are handled by each host site. Dates and prices come from each site’s published catalog, last checked ' +
+      esc(fmtDate(D.generated)) + ', ' + D.generated.slice(0, 4) + '. The host site’s page is always the final word.</p>';
+  }
+
+  renderShell();
+  buildControls();
+  wire();
+
+  var hash = new URLSearchParams(location.hash.slice(1));
+  if (['location', 'list', 'calendar'].indexOf(hash.get('view')) >= 0) state.view = hash.get('view');
+  render();
+  if (hash.get('class') && byId[hash.get('class')]) openDetail(hash.get('class'), 0);
+})();
+
+</script>
+</body>
+</html>
